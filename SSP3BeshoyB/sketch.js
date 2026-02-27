@@ -1,5 +1,5 @@
 //Falling Off  BeshoyB
-//I am trying to explore in this semester more animation with code  this sketch kinda ties with it as I am trying to to kinda make a type of physics engine with it
+//I am trying to explore in this semester more animation with code this sketch kinda ties with it as I am trying to to kinda make a type of physics engine with it
 let IsPressed = false;
 let BallY = 30;
 let randomNumber;
