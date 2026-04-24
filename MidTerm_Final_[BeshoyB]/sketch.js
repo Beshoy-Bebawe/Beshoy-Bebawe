@@ -89,7 +89,7 @@ function mousePressed(){
   let my = mouseY;
   let mx = mouseX;
   let d = dist(xposcircle,yposcircle,mx,my);
-  if(d < Radius)
+  if(d < Radius  && state == 'game')
   {
     point++;
     
