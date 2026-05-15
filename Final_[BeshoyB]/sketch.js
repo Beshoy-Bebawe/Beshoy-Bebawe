@@ -10,6 +10,7 @@ let Radius  = 25;
   let startTimer;
   let resetTimer = 0;
   let Duration = 30;
+  let bottomdisplay = 50;
   // the  idea of this is when you start you select a diffculty based on diffculty time of the teleport function will change
   //then, you run the game for around 30 seconds and try to click in the circle to get points
   // after 30 seconds the game is over and it will display your score.
@@ -21,9 +22,7 @@ let Radius  = 25;
  function teleport()
   //function to teleport circle based on time
  {
-  
-  
-  
+
 
   let RoundedTime = round(Timer)%t == 0;
 
@@ -31,8 +30,8 @@ let Radius  = 25;
 
  {
   OldTime = true;
-   yposcircle = random(0,650);
-    xposcircle = random(0,700);
+  // yposcircle = random(0,650);
+    //poscircle = random(0,700);
     
     
    
@@ -48,17 +47,11 @@ let Radius  = 25;
 function setup() {
   createCanvas(1000, 700); 
 
- 
-
-  
-  
-
   
 }
 //when everything is displayed using states 
 function draw() {
-   
-    
+  
 
   if(state == 'beforegame') 
     {
@@ -97,10 +90,10 @@ function mousePressed(){
   if(d < Radius  && state == 'game')
   {
     point++;
-    fill(0,128,0);
+    //fill(0,128,0);
     // figure out how to make it turn green and turn back to white and to grow a bit without changing the text.
-     yposcircle = random(0,650);
-    xposcircle = random(0,700);
+      yposcircle = random(bottomdisplay + Radius,height - Radius);
+    xposcircle = random(Radius,width - Radius);
     
 
 
@@ -121,6 +114,7 @@ function keyPressed(){
       
       StartGame();
       print("working");
+       Duration = 30;
         
 
     }
@@ -130,6 +124,7 @@ function keyPressed(){
 
       StartGame();
       t = 2.5;
+      Duration = 30;
 
     }
     else if ( key == '3'  && state =='beforegame')
@@ -163,8 +158,11 @@ function BeforeGame()
  
 
 
- text(' Press 1 for easy \n Press 2 for normal\n Press 3 for hard',width/2,height/2);
+ text(' Press 1 for easy  mode \n Press 2 for normal mode\n Press 3 for hard mode',width/2,height/2);
 
+  textSize(75);
+
+  text('Ball Click Game', 500,50);
 
 
 }
@@ -172,11 +170,11 @@ function BeforeGame()
   let TimeLeft = Duration - round(Timer,0);
   
   
-  background('white');
+ background(200);
   
   textSize(35);
-  text('Score:' + point,60,50);  
-  text('Timer: ' + TimeLeft,75,100);
+  text('Score:' + point,60,bottomdisplay);  
+  text('Timer: ' + TimeLeft,700,bottomdisplay);
   textSize(35);
   teleport();
   circle(xposcircle,yposcircle,Radius*2);
@@ -200,16 +198,6 @@ function BeforeGame()
     //}
    
 
-    
-
-    
-
-    
-    
-
-
-
-
  }
   function StartGame()
   {
@@ -217,6 +205,13 @@ function BeforeGame()
     state = 'game';
     startTimer  = millis()/1000;
      
+
+
+
+  }
+
+  class circle
+  {
 
 
 
@@ -235,3 +230,4 @@ function BeforeGame()
 // make a function to restart ot store the timer
 // make the ball green as the ball is pressed.
 // put more visual design aspects.
+// timer 15 when its supposed to be 30 on easy mode  when restarting the game. 
